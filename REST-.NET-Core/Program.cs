@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 var tasks = new List<TaskItem>();
 
+app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
 app.MapGet("/tasks", () => Results.Ok(tasks));
 app.MapPost("/tasks", (CreateTask request) =>
 {
